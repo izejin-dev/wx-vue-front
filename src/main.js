@@ -18,6 +18,10 @@ import '@/utils/vconsole.js'
 import './filters'
 // 全局注册微信js-sdk
 import WechatPlugin from '@/utils/wechatPlugin'
+//引入全局注册组件
+import { NavBar, Icon } from 'vant';
+Vue.use(NavBar)
+Vue.use(Icon)
 Vue.use(WechatPlugin)
 // 引入本地存储
 import { storage, sessionStorage } from '@/utils/storage'
