@@ -25,12 +25,12 @@
       </li>
     </ul>
     <div class="sign_out">退出账号</div>
-    <div class="warpper" v-if="false">
-      <div class="list">
-        <div class="logo"></div>
-        <div class="demo-home__title">VUE H5开发模板</div>
-      </div>
-    </div>
+<!--    <div class="warpper" v-if="false">-->
+<!--      <div class="list">-->
+<!--        <div class="logo"></div>-->
+<!--        <div class="demo-home__title">VUE H5开发模板</div>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </template>
 
