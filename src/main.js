@@ -21,6 +21,8 @@ import WechatPlugin from '@/utils/wechatPlugin'
 //引入全局注册组件
 import { NavBar, Icon } from 'vant';
 import { Form, Field, CellGroup } from 'vant';
+import { ActionSheet } from 'vant';
+Vue.use(ActionSheet)
 Vue.use(NavBar)
 Vue.use(Icon)
 Vue.use(CellGroup)

@@ -21,7 +21,7 @@ export const constantRouterMap = [
       {
         path: '/about',
         name: 'About',
-        component: () => import('@/views/home/about'),
+        component: () => import('@/views/about/about'),
         meta: { title: '关于我们', keepAlive: false }
       }
     ]
@@ -33,15 +33,33 @@ export const constantRouterMap = [
     meta: { title: '登录', keepAlive: false }
   },
   {
-    path:'/todoList',
-    name:'todoList',
-    component:()=>import('@/views/home/todo'),
+    path: '/todoList',
+    name: 'todoList',
+    component: () => import('@/views/about/todo'),
     meta: { title: '我的待办', keepAlive: false }
   },
   {
-    path:'/businessQuery',
-    name:'businessQuery',
-    component:()=>import('@/views/home/businessQuery'),
+    path: '/progressNotice',
+    name: 'progressNotice',
+    component: () => import('@/views/about/progressNotice'),
+    meta: { title: '进度通知', keepAlive: false }
+  },
+  {
+    path: '/businessDetail',
+    name: 'businessDetail',
+    component: () => import('@/views/about/businessDetail'),
+    meta: { title: '详情', keepAlive: false }
+  },
+  {
+    path: '/businessQueryList',
+    name: 'businessQueryList',
+    component: () => import('@/views/about/businessQueryList'),
+    meta: { title: '业务查询', keepAlive: false }
+  },
+  {
+    path: '/businessQuery',
+    name: 'businessQuery',
+    component: () => import('@/views/about/businessQuery'),
     meta: { title: '业务查询', keepAlive: false }
   },
 ]

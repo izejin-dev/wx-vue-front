@@ -13,7 +13,9 @@
       <div class="enterprise_info">
         <div class="enterprise_name_box">
           <div class="enterprise_name">企业名称</div>
-          <div class="enterprise_change">切换</div>
+<!--          <div class="enterprise_change">切换</div>-->
+          <van-cell is-link title="切换" @click="show = true" />
+          <van-action-sheet v-model="show" :actions="actions" @select="onSelect" />
         </div>
         <div class="user_name">当前登录的用户姓名</div>
       </div>
@@ -34,15 +36,22 @@
 // 请求接口
 import { getUserInfo } from '@/api/user.js'
 import { mapGetters } from 'vuex'
+import { Toast } from 'vant';
 export default {
   data() {
     return {
       wechat: `https://imgs.solui.cn/wx/640.gif`,
       quickList: [
-        {title:'待办提醒',total:'99',iconSrc:'',path:'/todoList'},
-        {title:'进度通知',total:'18',iconSrc:'',path:'/progressNotice'},
-        {title:'业务查询',total:'',iconSrc:'',path:'/businessQuery'},
-      ]
+        { title: '待办提醒', total: '99', iconSrc: '', path: '/todoList' },
+        { title: '进度通知', total: '18', iconSrc: '', path: '/progressNotice' },
+        { title: '业务查询', total: '', iconSrc: '', path: '/businessQuery' },
+      ],
+      show: false,
+      actions: [
+        { name: '租户一' },
+        { name: '租户二' },
+        { name: '租户三' },
+      ],
     }
   },
   computed: {
@@ -64,17 +73,21 @@ export default {
     doDispatch() {
       this.$store.dispatch('setUserName', '12313')
     },
-    onClickLeft(){
+    onClickLeft() {
       history.back()
     },
-    toDetail(item){
+    toDetail(item) {
       console.log(item.path)
       this.$router.push(item.path)
+    },
+    onSelect(item) {
+      this.show = false
+      Toast(item.name)
     }
   }
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .nav_bar {
   position: fixed;
   top: 0;
@@ -88,12 +101,20 @@ export default {
   padding: 0 42px 40px;
   background: #fff;
   .enterprise_name_box {
-    display: flex;
+    //display: flex;
+    position: relative;
     height: 40px;
     padding-top: 60px;
     .enterprise_name {
       font-size: 32px;
-      flex: 1;
+      //flex: 1;
+    }
+    .van-cell {
+      position: absolute;
+      width: auto;
+      right: 0;
+      top: 60px;
+      padding: 0;
     }
     .enterprise_change {
       width: 60px;

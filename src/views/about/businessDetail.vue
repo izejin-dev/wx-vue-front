@@ -3,22 +3,68 @@
   <div class="about-container">
     <div class="nav_bar">
       <van-nav-bar
-        title="我的待办"
+        title="详情"
         left-text="返回"
-        right-text="一键已读"
         left-arrow
         @click-left="onClickLeft"
-        @click-right="onClickRight"
       />
     </div>
     <div class="content_container">
-      <ul class="todo_list">
-        <li class="todo_list_item" v-for="(item,index) in quickList" :key="index" @click="toDetail(item)">
-          <div class="item_title">{{ item.title }}</div>
-          <div class="item_content" v-if="item.content">{{ item.content }}</div>
-          <div class="item_time">时间：{{ item.time }}</div>
-        </li>
-      </ul>
+      <!--   融资中、融资待审核   -->
+      <van-form  >
+        <van-cell-group >
+          <van-field
+            name="融e信编号"
+            label="融e信编号"
+            value="898082013"
+          />
+          <van-field
+            name="金额"
+            label="金额"
+            value="¥100,222.00"
+          />
+          <van-field
+            name="开立企业"
+            label="开立企业"
+            value="XXXX 企业"
+          />
+          <van-field
+            name="承兑企业"
+            label="承兑企业"
+            value="XXXX 企业"
+          />
+          <van-field
+            name="保荐企业"
+            label="保荐企业"
+            value=""
+          />
+          <van-field
+            name="签收企业"
+            label="签收企业"
+            value="XXX供应商"
+          />
+          <van-field
+            name="承兑日期"
+            label="承兑日期"
+            value="yyyy-mm-dd"
+          />
+          <van-field
+            name="签收日期"
+            label="签收日期"
+            value="yyyy-mm-dd"
+          />
+          <van-field
+            name="业务环节"
+            label="业务环节"
+            value="融资"
+          />
+          <van-field
+            name="状态"
+            label="状态"
+            value="待复核"
+          />
+        </van-cell-group>
+      </van-form>
     </div>
 
   </div>
@@ -32,16 +78,6 @@ export default {
   data() {
     return {
       wechat: `https://imgs.solui.cn/wx/640.gif`,
-      quickList: [
-        { title: 'XXX企业提交了再保理申请待复核', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales', time: 'yyyy-mm-dd'
-         , path: '/todoList' },
-        { title: 'XXX企业提交了再保理申请待复核', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales', time: 'yyyy-mm-dd'
-          , path: '/todoList' },
-        { title: 'XXX企业提交了再保理申请待复核', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales', time: 'yyyy-mm-dd'
-          , path: '/todoList' },
-        { title: 'XXX企业提交了再保理申请待复核', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales', time: 'yyyy-mm-dd'
-          , path: '/todoList' }
-      ]
     }
   },
   computed: {
@@ -63,20 +99,20 @@ export default {
     doDispatch() {
       this.$store.dispatch('setUserName', '12313')
     },
-    onClickLeft(){
+    onClickLeft() {
       history.back()
     },
-    onClickRight(){
+    onClickRight() {
       // history.back()
       console.log('一键已读')
     },
-    toDetail(item){
+    toDetail(item) {
       console.log(item.path)
-    }
+    },
   }
 }
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .nav_bar {
   position: fixed;
   top: 0;
@@ -86,27 +122,15 @@ export default {
 .content_container {
   margin-top: 90px;
 }
-.todo_list {
+.van-form {
   margin-top: 40px;
-  background: #fff;
-  .todo_list_item {
-    list-style: none;
-    line-height: 40px;
-    padding: 0 42px;
-    &:not(:nth-child(1)) {
-      border-top: 1px solid #ebedf0;
-    }
-    .item_title {
-      font-size: 28px;
-      line-height: 80px;
-    }
-    .item_time {
-      line-height: 60px;
-      color: rgba(51, 51, 51, .5);
-    }
-  }
 }
-
+.van-cell-group {
+  position: relative;
+}
+/deep/ .van-field__control {
+  text-align: right;
+}
 .about-container {
   /* 你的命名空间 */
   background: rgba(245, 245, 245, 1);
