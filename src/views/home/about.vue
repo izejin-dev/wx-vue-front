@@ -9,28 +9,24 @@
         @click-left="onClickLeft"
       />
     </div>
-    <div class="enterprise_info">
-      <div class="enterprise_name_box">
-        <div class="enterprise_name">企业名称</div>
-        <div class="enterprise_change">切换</div>
+    <div class="content_container">
+      <div class="enterprise_info">
+        <div class="enterprise_name_box">
+          <div class="enterprise_name">企业名称</div>
+          <div class="enterprise_change">切换</div>
+        </div>
+        <div class="user_name">当前登录的用户姓名</div>
       </div>
-      <div class="user_name">当前登录的用户姓名</div>
+      <ul class="quick_list">
+        <li class="quick_list_item" v-for="(item,index) in quickList" :key="index" @click="toDetail(item)">
+          <div class="item_title">
+            <van-icon name="chat-o" />
+            {{ item.title }}</div>
+          <div class="item_total" v-if="item.total">{{ item.total }}</div>
+        </li>
+      </ul>
+      <div class="sign_out">退出账号</div>
     </div>
-    <ul class="quick_list">
-      <li class="quick_list_item" v-for="(item,index) in quickList" :key="index" @click="toDetail(item)">
-        <div class="item_title">
-          <van-icon name="chat-o" />
-          {{ item.title }}</div>
-        <div class="item_total" v-if="item.total">{{ item.total }}</div>
-      </li>
-    </ul>
-    <div class="sign_out">退出账号</div>
-<!--    <div class="warpper" v-if="false">-->
-<!--      <div class="list">-->
-<!--        <div class="logo"></div>-->
-<!--        <div class="demo-home__title">VUE H5开发模板</div>-->
-<!--      </div>-->
-<!--    </div>-->
   </div>
 </template>
 
@@ -44,7 +40,7 @@ export default {
       wechat: `https://imgs.solui.cn/wx/640.gif`,
       quickList: [
         {title:'待办提醒',total:'99',iconSrc:'',path:'/todoList'},
-        {title:'进度通知',total:'',iconSrc:'',path:'/progressNotice'},
+        {title:'进度通知',total:'18',iconSrc:'',path:'/progressNotice'},
         {title:'业务查询',total:'',iconSrc:'',path:'/businessQuery'},
       ]
     }
@@ -73,6 +69,7 @@ export default {
     },
     toDetail(item){
       console.log(item.path)
+      this.$router.push(item.path)
     }
   }
 }
@@ -84,10 +81,12 @@ export default {
   left: 0;
   width: 100%;
 }
+.content_container {
+  margin-top: 90px;
+}
 .enterprise_info {
   padding: 0 42px 40px;
   background: #fff;
-  margin-top: 90px;
   .enterprise_name_box {
     display: flex;
     height: 40px;
@@ -133,6 +132,7 @@ export default {
       justify-content: center;
       width: 50px;
       height: 30px;
+      line-height: 30px;
       background: inherit;
       background-color: rgba(249, 94, 90, 1);
       -moz-box-shadow: none;

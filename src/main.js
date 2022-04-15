@@ -20,8 +20,10 @@ import './filters'
 import WechatPlugin from '@/utils/wechatPlugin'
 //引入全局注册组件
 import { NavBar, Icon } from 'vant';
+import { Form, Field, CellGroup } from 'vant';
 Vue.use(NavBar)
 Vue.use(Icon)
+Vue.use(CellGroup)
 Vue.use(WechatPlugin)
 // 引入本地存储
 import { storage, sessionStorage } from '@/utils/storage'
@@ -34,8 +36,6 @@ Vue.config.productionTip = false
 
 import { Swipe, SwipeItem } from 'vant';
 import { Tab, Tabs } from 'vant';
-import { Form } from 'vant';
-import { Field } from 'vant';
 
 Vue.use(Form);
 Vue.use(Field);

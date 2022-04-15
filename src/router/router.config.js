@@ -31,5 +31,17 @@ export const constantRouterMap = [
     name: 'Login',
     component: () => import('@/views/login/index'),
     meta: { title: '登录', keepAlive: false }
-  }
+  },
+  {
+    path:'/todoList',
+    name:'todoList',
+    component:()=>import('@/views/home/todo'),
+    meta: { title: '我的待办', keepAlive: false }
+  },
+  {
+    path:'/businessQuery',
+    name:'businessQuery',
+    component:()=>import('@/views/home/businessQuery'),
+    meta: { title: '业务查询', keepAlive: false }
+  },
 ]
