@@ -15,64 +15,64 @@
       </div>
       <!--   融资中、融资待审核   -->
       <van-form v-show="formType == 1">
-        <van-cell-group inset  @click="toDetail">
-          <van-field name="融e信编号" label="融e信编号" value="123"/>
-          <van-field name="融资金额" label="融资金额" value="123"/>
-          <van-field name="承兑企业" label="承兑企业" value="xxxx核心企业"/>
-          <van-field name="签收企业" label="签收企业" value="xxxx供应商企业"/>
-          <van-field name="融资企业" label="融资企业" value="xxxx供应商企业"/>
-          <van-field name="业务环节" label="业务环节" value="融资"/>
-          <van-field name="状态" label="状态" value="待平台资方审核"/>
+        <van-cell-group inset  @click="toDetail" v-for="(item, index) in formList" :key="index">
+          <van-field name="融e信编号" label="融e信编号" :value="item.code"/>
+          <van-field name="融资金额" label="融资金额" :value="item.amount"/>
+          <van-field name="承兑企业" label="承兑企业" :value="item.core"/>
+          <van-field name="签收企业" label="签收企业" :value="item.sign"/>
+          <van-field name="融资企业" label="融资企业" :value="item.core"/>
+          <van-field name="业务环节" label="业务环节" :value="item.businessLink"/>
+          <van-field name="状态" label="状态" :value="item.state"/>
           <div class="copy_btn">复制</div>
         </van-cell-group>
       </van-form>
       <!--   待签收、待承兑、已承兑   -->
       <van-form v-show="formType == 2">
-        <van-cell-group inset @click="toDetail">
-          <van-field name="融e信编号" label="融e信编号" value="123"/>
-          <van-field name="融e信金额" label="融e信金额" value="123"/>
-          <van-field name="承兑企业" label="承兑企业" value="xxxx核心企业"/>
-          <van-field name="签收企业" label="签收企业" value="xxxx供应商企业"/>
-          <van-field name="业务环节" label="业务环节" value="开立"/>
-          <van-field name="状态" label="状态" value="待签收"/>
+        <van-cell-group inset @click="toDetail" v-for="(item, index) in formList" :key="index">
+          <van-field name="融e信编号" label="融e信编号" :value="item.code"/>
+          <van-field name="融e信金额" label="融e信金额" :value="item.amount"/>
+          <van-field name="承兑企业" label="承兑企业" :value="item.core"/>
+          <van-field name="签收企业" label="签收企业" :value="item.sign"/>
+          <van-field name="业务环节" label="业务环节" :value="item.businessLink"/>
+          <van-field name="状态" label="状态" :value="item.state"/>
           <div class="copy_btn">复制</div>
         </van-cell-group>
       </van-form>
       <!--   正常持有   -->
       <van-form v-show="formType == 3">
-        <van-cell-group inset @click="toDetail">
-          <van-field name="融e信编号" label="融e信编号" value="123"/>
-          <van-field name="融e信金额" label="融e信金额" value="123"/>
-          <van-field name="承兑企业" label="承兑企业" value="xxxx核心企业"/>
-          <van-field name="签收企业" label="签收企业" value="xxxx供应商企业"/>
-          <van-field name="业务环节" label="业务环节" value="-"/>
-          <van-field name="状态" label="状态" value="正常持有"/>
+        <van-cell-group inset @click="toDetail" v-for="(item, index) in formList" :key="index">
+          <van-field name="融e信编号" label="融e信编号" :value="item.code"/>
+          <van-field name="融e信金额" label="融e信金额" :value="item.amount"/>
+          <van-field name="承兑企业" label="承兑企业" :value="item.core"/>
+          <van-field name="签收企业" label="签收企业" :value="item.sign"/>
+          <van-field name="业务环节" label="业务环节" :value="item.businessLink"/>
+          <van-field name="状态" label="状态" :value="item.state"/>
           <div class="copy_btn">复制</div>
         </van-cell-group>
       </van-form>
       <!--   流转中   -->
       <van-form v-show="formType == 4">
-        <van-cell-group inset @click="toDetail">
-          <van-field name="融e信编号" label="融e信编号" value="123"/>
-          <van-field name="流转金额" label="流转金额" value="123"/>
-          <van-field name="承兑企业" label="承兑企业" value="xxxx核心企业"/>
-          <van-field name="签收企业" label="签收企业" value="xxxx供应商企业"/>
-          <van-field name="接收企业" label="接收企业" value="xxxx供应商企业"/>
-          <van-field name="业务环节" label="业务环节" value="流转"/>
-          <van-field name="状态" label="状态" value="待签收"/>
+        <van-cell-group inset @click="toDetail" v-for="(item, index) in formList" :key="index">
+          <van-field name="融e信编号" label="融e信编号" :value="item.code"/>
+          <van-field name="流转金额" label="流转金额" :value="item.amount"/>
+          <van-field name="承兑企业" label="承兑企业" :value="item.core"/>
+          <van-field name="签收企业" label="签收企业" :value="item.sign"/>
+          <van-field name="接收企业" label="接收企业" :value="item.bank"/>
+          <van-field name="业务环节" label="业务环节" :value="item.businessLink"/>
+          <van-field name="状态" label="状态" :value="item.state"/>
           <div class="copy_btn">复制</div>
         </van-cell-group>
       </van-form>
       <!--   应还、应收   -->
       <van-form v-show="formType == 5">
-        <van-cell-group inset @click="toDetail">
-          <van-field name="融e信编号" label="融e信编号" value="123"/>
-          <van-field name="融e信金额" label="融e信金额" value="123"/>
-          <van-field name="承兑企业" label="承兑企业" value="xxxx核心企业"/>
-          <van-field name="接收企业" label="接收企业" value="xxxx供应商企业"/>
-          <van-field name="资金方" label="资金方" value="xxxx银行"/>
-          <van-field name="融e信承诺付款日" label="融e信承诺付款日" value="2021-11-12"/>
-          <van-field name="状态" label="状态" value="未逾期"/>
+        <van-cell-group inset @click="toDetail" v-for="(item, index) in formList" :key="index">
+          <van-field name="融e信编号" label="融e信编号" :value="item.code"/>
+          <van-field name="融e信金额" label="融e信金额" :value="item.amount"/>
+          <van-field name="承兑企业" label="承兑企业" :value="item.core"/>
+          <van-field name="接收企业" label="接收企业" :value="item.supplier"/>
+          <van-field name="资金方" label="资金方" :value="item.bank"/>
+          <van-field name="融e信承诺付款日" label="融e信承诺付款日" :value="item.date"/>
+          <van-field name="状态" label="状态" :value="item.state"/>
           <div class="copy_btn">复制</div>
         </van-cell-group>
       </van-form>
@@ -90,20 +90,29 @@ export default {
     return {
       wechat: `https://imgs.solui.cn/wx/640.gif`,
       userType: '', // 1供应商，2核心企业，3资金方
-      todayReceived: '$13131',
-      tomorrowReceived: '$19996',
-      number: '',
-      quickList: [
-        { title: 'XXX企业提交了再保理申请待复核', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales', time: 'yyyy-mm-dd'
-          , path: '/todoList' },
-        { title: 'XXX企业提交了再保理申请待复核', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales', time: 'yyyy-mm-dd'
-          , path: '/todoList' },
-        { title: 'XXX企业提交了再保理申请待复核', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales', time: 'yyyy-mm-dd'
-          , path: '/todoList' },
-        { title: 'XXX企业提交了再保理申请待复核', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales', time: 'yyyy-mm-dd'
-          , path: '/todoList' }
-      ],
       formType: 0, // 1-融资中、融资待审核,2-待签收、待承兑、已承兑,3-正常持有,4-流转中,5-应还、应收
+      formList: [
+        {
+          code: 123,
+          amount: 999,
+          core: 'xxxx核心企业',
+          sign: 'xxxx核心企业',
+          supplier: 'xxxx供应商企业',
+          bank: 'xxx银行',
+          businessLink: 'xxx银行',
+          date: '2021-11-12',
+          state: '未逾期',
+        },
+        {
+          code: 12356,
+          amount: 11999,
+          core: 'xxxx核心企业',
+          supplier: 'xxxx供应商企业',
+          bank: 'xxx银行',
+          date: '2021-11-12',
+          state: '未逾期',
+        },
+      ],
     }
   },
   computed: {
@@ -191,6 +200,7 @@ export default {
 }
 .van-cell-group {
   position: relative;
+  margin-top: 40px;
 }
 .copy_btn {
   position: absolute;
