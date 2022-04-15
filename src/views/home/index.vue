@@ -1,41 +1,49 @@
 <!-- home -->
 <template>
-  <div class="index-container">
-    <div class="warpper">
-      <h2 class="demo-home__desc">
-        首页
-      </h2>
+  <div class="home">
+    <div class="title">
+      <span class="text1">云商平台</span>
+      <span class="text2">登录</span>
+    </div>
+    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+      <van-swipe-item>1</van-swipe-item>
+      <van-swipe-item>2</van-swipe-item>
+      <van-swipe-item>3</van-swipe-item>
+      <van-swipe-item>4</van-swipe-item>
+    </van-swipe>
+    <div class="center">
+      <div class="center_title">产品介绍</div>
+      <div class="cards">
+        <div class="box">xx</div>
+        <div class="box">xx</div>
+        <div class="box">xx</div>
+      </div>
+      <div class="center_title">帮助中心</div>
+      <div class="list">
+        <div class="list_title">我有了额度如何开利</div>
+        <div class="list_box">xxxxxxxxxxxxxxxxxxxxxxxx</div>
+      </div>
+      <div class="list">
+        <div class="list_title">我有了额度如何开利</div>
+        <div class="list_box">xxxxxxxxxxxxxxxxxxxxxxxx</div>
+      </div>
+      <div class="list">
+        <div class="list_title">我有了额度如何开利</div>
+        <div class="list_box">xxxxxxxxxxxxxxxxxxxxxxxx</div>
+      </div>
+      <div class="list">
+        <div class="list_title">我有了额度如何开利</div>
+        <div class="list_box">xxxxxxxxxxxxxxxxxxxxxxxx</div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  name:'Home',
   data() {
     return {
-      list: [
-        'Vue-cli4',
-        '配置多环境变量',
-        'VantUI 组件按需加载',
-        'Sass 全局样式',
-        'Webpack 4',
-        'Vuex 状态管理',
-        'Axios 封装及接口管理',
-        'Vue-router',
-        'Webpack 4 vue.config.js 基础配置',
-        '配置 proxy 跨域',
-        '配置 alias 别名',
-        '配置 打包分析',
-        '配置 externals 引入 cdn 资源',
-        '去掉 console.log',
-        'splitChunks 单独打包第三方模块',
-        '添加 IE 兼容',
-        'Eslint+Pettier 统一开发规范',
-        'vconsole',
-        '动态设置title',
-        '配置Jssdk',
-        '本地存储storage封装'
-      ]
     }
   },
 
@@ -47,30 +55,76 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.index-container {
-  .warpper {
-    padding: 12px;
+.home{
+  .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
     background: #fff;
-    .demo-home__title {
-      margin: 0 0 6px;
-      font-size: 32px;
-      .demo-home__title img,
-      .demo-home__title span {
-        display: inline-block;
-        vertical-align: middle;
+    .text1{
+      font-size: 30px;
+      font-weight: 700;
+    }
+    .text2{
+      font-size: 30px;
+      color: #1989fa;
+    }
+  }
+  .my-swipe .van-swipe-item {
+    color: #fff;
+    font-size: 20px;
+    line-height: 300px;
+    text-align: center;
+    background-color: #39a9ed;
+    height: 300px;
+  }
+  .center{
+    .center_title{
+      font-size: 26px;
+      height: 80px;
+      padding: 0 30px;
+      margin-top: 20px;
+      background: #fff;
+      padding-top: 10px;
+      border-bottom: 1px solid rgb(225, 215, 215);
+    }
+    .cards{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width:100%;
+      height: 200px;
+      background: #fff;
+      .box{
+        flex: auto;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        border-right: 1px solid rgb(225, 215, 215);
       }
-      img {
-        width: 32px;
-      }
-      span {
-        margin-left: 16px;
-        font-weight: 500;
+      .box:last-child{
+         border-right: 0px;
       }
     }
-    .demo-home__desc {
-      margin: 0 0 20px;
-      color: rgba(69, 90, 100, 0.6);
-      font-size: 14px;
+    .list{
+      width: 100%;
+      background: #fff;
+      .list_title{
+        padding: 20px 15px 0 15px;
+        font-size: 24px;
+      }
+      .list_box{
+        padding: 10px 20px 30px 20px;
+        font-size: 22px;
+        color: grey;
+        border-bottom: 1px solid rgb(225, 215, 215);
+      }
+    }
+    .list:last-child .list_box{
+      border-bottom: 0px;
     }
   }
 }

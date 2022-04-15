@@ -32,6 +32,18 @@ Vue.use(require('vue-wechat-title'))
 
 Vue.config.productionTip = false
 
+import { Swipe, SwipeItem } from 'vant';
+import { Tab, Tabs } from 'vant';
+import { Form } from 'vant';
+import { Field } from 'vant';
+
+Vue.use(Form);
+Vue.use(Field);
+Vue.use(Tab);
+Vue.use(Tabs);
+Vue.use(Swipe);
+Vue.use(SwipeItem);
+
 new Vue({
   el: '#app',
   router,
