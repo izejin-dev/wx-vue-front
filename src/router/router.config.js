@@ -66,7 +66,7 @@ export const constantRouterMap = [
     path: '/articleList',
     name: 'articleList',
     component: () => import('@/views/home/articleList'),
-    meta: { title: '列表页标题', keepAlive: false }
+    meta: { title: '产品列表页标题', keepAlive: false }
   },
   {
     path: '/articleDetail',
@@ -74,4 +74,16 @@ export const constantRouterMap = [
     component: () => import('@/views/home/articleDetail'),
     meta: { title: '详情', keepAlive: false }
   },
+  {
+    path: '/operateList',
+    name: 'operateList',
+    component: () => import('@/views/home/operateList'),
+    meta: { title: '操作页标题', keepAlive: false }
+  },
+  {
+    path: '/operateDetail',
+    name: 'operateDetail',
+    component: () => import('@/views/home/operateDetail'),
+    meta: { title: '详情', keepAlive: false }
+  }
 ]

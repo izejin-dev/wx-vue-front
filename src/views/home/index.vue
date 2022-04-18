@@ -3,7 +3,7 @@
   <div class="home">
     <div class="title">
       <span class="platform">云商平台</span>
-      <span class="is_sign" v-if="!isSignIn">登录</span>
+      <span class="is_sign" v-if="!isSignIn" @click="$router.push('/login')">登录</span>
       <span class="is_sign" v-if="isSignIn">已登录</span>
     </div>
     <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
@@ -20,36 +20,37 @@
           <van-action-sheet v-model="show" :actions="actions" cancel-text="取消" description="选择租户平台" @select="onSelect" />
         </div>
         <div class="cards">
-          <div class="box">待办提醒</div>
-          <div class="box">进度通知</div>
-          <div class="box">业务查询</div>
+          <div class="box quick-item" v-for="(item, index) in quickList" :key="index" @click="toDetail(item)">
+            <div class="item_title">{{ item.title }}</div>
+            <div class="item_total" v-if="item.total">{{ item.total }}</div>
+          </div>
         </div>
       </div>
       <div class="card_center_box" v-if="isSignIn">
         <div class="center_title">
           <div class="center_title_info">操作手册</div>
-          <div class="center_title_btn">更多</div>
+          <div class="center_title_btn" @click="toOperateList">更多</div>
         </div>
         <div class="cards">
-          <div class="box">鼎e信融资</div>
-          <div class="box">鼎e信融资</div>
-          <div class="box">鼎e信融资审核</div>
+          <div class="box" @click="$router.push('/operateDetail')">鼎e信融资</div>
+          <div class="box" @click="$router.push('/operateDetail')">鼎e信融资</div>
+          <div class="box" @click="$router.push('/operateDetail')">鼎e信融资审核</div>
         </div>
       </div>
       <div class="card_center_box">
         <div class="center_title">
           <div class="center_title_info">产品介绍</div>
-          <div class="center_title_btn">更多</div>
+          <div class="center_title_btn" @click="toProList">更多</div>
         </div>
         <div class="cards">
-          <div class="box">xx</div>
-          <div class="box">xx</div>
-          <div class="box">xx</div>
+          <div class="box" @click="$router.push('/articleDetail')">xx</div>
+          <div class="box" @click="$router.push('/articleDetail')">xx</div>
+          <div class="box" @click="$router.push('/articleDetail')">xx</div>
         </div>
       </div>
       <div class="center_title">帮助中心</div>
       <div class="list">
-        <div class="list_title" @click="toDetail">我有了额度如何开利</div>
+        <div class="list_title">我有了额度如何开利</div>
         <div class="list_box">xxxxxxxxxxxxxxxxxxxxxxxx</div>
       </div>
       <div class="list">
@@ -76,11 +77,16 @@ export default {
   data() {
     return {
       show: false,
-      isSignIn: true, // 是否登录
+      isSignIn: false, // 是否登录
       actions: [
         { name: '租户一' },
         { name: '租户二' },
         { name: '租户三' }
+      ],
+      quickList: [
+        { title: '待办提醒', total: '99', iconSrc: '', path: '/todoList' },
+        { title: '进度通知', total: '18', iconSrc: '', path: '/progressNotice' },
+        { title: '业务查询', total: '', iconSrc: '', path: '/businessQuery' },
       ],
     }
   },
@@ -94,7 +100,14 @@ export default {
       this.show = false
       Toast(item.name)
     },
-    toDetail() {
+    toDetail(item) {
+      console.log(item.path)
+      this.$router.push(item.path)
+    },
+    toOperateList() {
+      this.$router.push('/operateList')
+    },
+    toProList() {
       this.$router.push('/articleList')
     }
   }
@@ -142,7 +155,7 @@ export default {
         flex: 1;
       }
       .center_title_btn {
-        width: 60px;
+        width: auto;
       }
       .van-cell {
         width: auto;
@@ -171,6 +184,25 @@ export default {
       }
       .box:last-child{
          border-right: 0px;
+      }
+      .quick-item {
+        position: relative;
+        .item_total {
+          position: absolute;
+          right: 20px;
+          top: 20px;
+          color: #fff;
+          font-size: 12px;
+          border-radius: 15px;
+          text-align: center;
+          width: 50px;
+          height: 30px;
+          line-height: 30px;
+          background-color: rgba(249, 94, 90, 1);
+          font-family: '微软雅黑 Regular', '微软雅黑', sans-serif;
+          font-weight: 400;
+          font-style: normal;
+        }
       }
     }
     .list{

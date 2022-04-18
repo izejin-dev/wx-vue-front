@@ -22,7 +22,8 @@
         <li class="quick_list_item" v-for="(item,index) in quickList" :key="index" @click="toDetail(item)">
           <div class="item_title">
             <van-icon name="chat-o" />
-            {{ item.title }}</div>
+            {{ item.title }}
+          </div>
           <div class="item_total" v-if="item.total">{{ item.total }}</div>
         </li>
       </ul>
@@ -145,17 +146,11 @@ export default {
       color: #fff;
       font-size: 12px;
       border-radius: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      text-align: center;
       width: 50px;
       height: 30px;
       line-height: 30px;
-      background: inherit;
       background-color: rgba(249, 94, 90, 1);
-      -moz-box-shadow: none;
-      -webkit-box-shadow: none;
-      box-shadow: none;
       font-family: '微软雅黑 Regular', '微软雅黑', sans-serif;
       font-weight: 400;
       font-style: normal;

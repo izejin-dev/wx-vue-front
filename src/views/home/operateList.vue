@@ -3,7 +3,7 @@
   <div class="container">
     <div class="nav_bar">
       <van-nav-bar
-        title="产品页标题"
+        title="操作页标题"
         left-text="返回"
         left-arrow
         @click-left="onClickLeft"
@@ -69,7 +69,7 @@ export default {
     },
     toDetail(item, index) {
       console.log(index)
-      this.$router.push('/articleDetail')
+      this.$router.push('/proDetail')
     }
   }
 }

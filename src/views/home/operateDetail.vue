@@ -3,7 +3,7 @@
   <div class="container">
     <div class="nav_bar">
       <van-nav-bar
-        title="产品详情"
+        title="操作详情"
         left-text="返回"
         left-arrow
         @click-left="onClickLeft"
