@@ -13,9 +13,8 @@
       <div class="enterprise_info">
         <div class="enterprise_name_box">
           <div class="enterprise_name">企业名称</div>
-<!--          <div class="enterprise_change">切换</div>-->
           <van-cell is-link title="切换" @click="show = true" />
-          <van-action-sheet v-model="show" :actions="actions" @select="onSelect" />
+          <van-action-sheet v-model="show" :actions="actions" cancel-text="取消" description="选择租户平台" @select="onSelect" />
         </div>
         <div class="user_name">当前登录的用户姓名</div>
       </div>
@@ -36,7 +35,7 @@
 // 请求接口
 import { getUserInfo } from '@/api/user.js'
 import { mapGetters } from 'vuex'
-import { Toast } from 'vant';
+import { Toast } from 'vant'
 export default {
   data() {
     return {
@@ -101,13 +100,11 @@ export default {
   padding: 0 42px 40px;
   background: #fff;
   .enterprise_name_box {
-    //display: flex;
     position: relative;
     height: 40px;
     padding-top: 60px;
     .enterprise_name {
       font-size: 32px;
-      //flex: 1;
     }
     .van-cell {
       position: absolute;

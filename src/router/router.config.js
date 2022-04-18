@@ -62,4 +62,16 @@ export const constantRouterMap = [
     component: () => import('@/views/about/businessQuery'),
     meta: { title: '业务查询', keepAlive: false }
   },
+  {
+    path: '/articleList',
+    name: 'articleList',
+    component: () => import('@/views/home/articleList'),
+    meta: { title: '列表页标题', keepAlive: false }
+  },
+  {
+    path: '/articleDetail',
+    name: 'articleDetail',
+    component: () => import('@/views/home/articleDetail'),
+    meta: { title: '详情', keepAlive: false }
+  },
 ]

@@ -1,6 +1,6 @@
 <!-- home -->
 <template>
-  <div class="about-container">
+  <div class="container">
     <div class="nav_bar">
       <van-nav-bar
         title="详情"
@@ -10,23 +10,9 @@
       />
     </div>
     <div class="content_container">
-      <!--   业务详情   -->
-      <van-form  >
-        <van-cell-group >
-          <van-field name="融e信编号" label="融e信编号" :value="formData.number"/>
-          <van-field name="金额" label="金额" :value="formData.amount"/>
-          <van-field name="开立企业" label="开立企业" value="XXXX 企业"/>
-          <van-field name="承兑企业" label="承兑企业" value="XXXX 企业"/>
-          <van-field name="保荐企业" label="保荐企业" value=""/>
-          <van-field name="签收企业" label="签收企业" value="XXX供应商"/>
-          <van-field name="承兑日期" label="承兑日期" value="yyyy-mm-dd"/>
-          <van-field name="签收日期" label="签收日期" value="yyyy-mm-dd"/>
-          <van-field name="业务环节" label="业务环节" value="融资"/>
-          <van-field name="状态" label="状态" value="待复核"/>
-        </van-cell-group>
-      </van-form>
+      <div class="article_title">{{ articleTitle }}</div>
+      <div class="article_info">{{ articleDetail }}</div>
     </div>
-
   </div>
 </template>
 
@@ -38,19 +24,18 @@ export default {
   data() {
     return {
       wechat: `https://imgs.solui.cn/wx/640.gif`,
-      formData: {
-        number: '',
-        amount: '999',
-        core: 'xxxx核心企业',
-        sign: 'xxxx核心企业',
-        supplier: 'xxxx供应商企业',
-        bank: 'xxx银行',
-        businessLink: 'xxx银行',
-        date: '2021-11-12',
-        state: '未逾期',
-
-
-      },
+      quickList: [
+        { title: 'XXX企业提交了再保理申请待复核', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales', time: 'yyyy-mm-dd'
+         , path: '/todoList' },
+        { title: 'XXX企业提交了再保理申请待复核', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales', time: 'yyyy-mm-dd'
+          , path: '/todoList' },
+        { title: 'XXX企业提交了再保理申请待复核', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales', time: 'yyyy-mm-dd'
+          , path: '/todoList' },
+        { title: 'XXX企业提交了再保理申请待复核', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales', time: 'yyyy-mm-dd'
+          , path: '/todoList' }
+      ],
+      articleTitle: 'Lorem ipsum dolor sit amet',
+      articleDetail: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales',
     }
   },
   computed: {
@@ -81,7 +66,8 @@ export default {
     },
     toDetail(item) {
       console.log(item.path)
-    },
+      this.$router.push('/articleDetail')
+    }
   }
 }
 </script>
@@ -94,17 +80,16 @@ export default {
 }
 .content_container {
   margin-top: 90px;
+  padding: 40px;
+  .article_title {
+    font-size: 32px;
+    font-weight: 600;
+  }
+  .article_info {
+    line-height: 30px;
+  }
 }
-.van-form {
-  margin-top: 40px;
-}
-.van-cell-group {
-  position: relative;
-}
-/deep/ .van-field__control {
-  text-align: right;
-}
-.about-container {
+.container {
   /* 你的命名空间 */
   background: rgba(245, 245, 245, 1);
   height: 100vh;

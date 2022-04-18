@@ -16,7 +16,7 @@
       <!--   融资中、融资待审核   -->
       <van-form v-show="formType == 1">
         <van-cell-group inset  @click="toDetail" v-for="(item, index) in formList" :key="index">
-          <van-field name="融e信编号" label="融e信编号" :value="item.code"/>
+          <van-field name="融e信编号" label="融e信编号" :value="item.number"/>
           <van-field name="融资金额" label="融资金额" :value="item.amount"/>
           <van-field name="承兑企业" label="承兑企业" :value="item.core"/>
           <van-field name="签收企业" label="签收企业" :value="item.sign"/>
@@ -29,7 +29,7 @@
       <!--   待签收、待承兑、已承兑   -->
       <van-form v-show="formType == 2">
         <van-cell-group inset @click="toDetail" v-for="(item, index) in formList" :key="index">
-          <van-field name="融e信编号" label="融e信编号" :value="item.code"/>
+          <van-field name="融e信编号" label="融e信编号" :value="item.number"/>
           <van-field name="融e信金额" label="融e信金额" :value="item.amount"/>
           <van-field name="承兑企业" label="承兑企业" :value="item.core"/>
           <van-field name="签收企业" label="签收企业" :value="item.sign"/>
@@ -41,7 +41,7 @@
       <!--   正常持有   -->
       <van-form v-show="formType == 3">
         <van-cell-group inset @click="toDetail" v-for="(item, index) in formList" :key="index">
-          <van-field name="融e信编号" label="融e信编号" :value="item.code"/>
+          <van-field name="融e信编号" label="融e信编号" :value="item.number"/>
           <van-field name="融e信金额" label="融e信金额" :value="item.amount"/>
           <van-field name="承兑企业" label="承兑企业" :value="item.core"/>
           <van-field name="签收企业" label="签收企业" :value="item.sign"/>
@@ -53,7 +53,7 @@
       <!--   流转中   -->
       <van-form v-show="formType == 4">
         <van-cell-group inset @click="toDetail" v-for="(item, index) in formList" :key="index">
-          <van-field name="融e信编号" label="融e信编号" :value="item.code"/>
+          <van-field name="融e信编号" label="融e信编号" :value="item.number"/>
           <van-field name="流转金额" label="流转金额" :value="item.amount"/>
           <van-field name="承兑企业" label="承兑企业" :value="item.core"/>
           <van-field name="签收企业" label="签收企业" :value="item.sign"/>
@@ -66,7 +66,7 @@
       <!--   应还、应收   -->
       <van-form v-show="formType == 5">
         <van-cell-group inset @click="toDetail" v-for="(item, index) in formList" :key="index">
-          <van-field name="融e信编号" label="融e信编号" :value="item.code"/>
+          <van-field name="融e信编号" label="融e信编号" :value="item.number"/>
           <van-field name="融e信金额" label="融e信金额" :value="item.amount"/>
           <van-field name="承兑企业" label="承兑企业" :value="item.core"/>
           <van-field name="接收企业" label="接收企业" :value="item.supplier"/>
@@ -93,7 +93,7 @@ export default {
       formType: 0, // 1-融资中、融资待审核,2-待签收、待承兑、已承兑,3-正常持有,4-流转中,5-应还、应收
       formList: [
         {
-          code: 123,
+          number: 123,
           amount: 999,
           core: 'xxxx核心企业',
           sign: 'xxxx核心企业',
@@ -104,7 +104,7 @@ export default {
           state: '未逾期',
         },
         {
-          code: 12356,
+          number: 12356,
           amount: 11999,
           core: 'xxxx核心企业',
           supplier: 'xxxx供应商企业',
