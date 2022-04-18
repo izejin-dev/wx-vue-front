@@ -36,11 +36,18 @@
                     />
                     <van-field
                         v-model="code"
-                        name="验证码"
-                        label="验证码"
-                        placeholder="验证码"
-                        :rules="[{ required: true, message: '请填写验证码' }]"
+                        name="图形验证码"
+                        label="图形验证码"
+                        placeholder="图形验证码"
+                        :rules="[{ required: true, message: '请填写图形验证码' }]"
                     />
+                  <van-field
+                    v-model="code"
+                    name="验证码"
+                    label="验证码"
+                    placeholder="验证码"
+                    :rules="[{ required: true, message: '请填写验证码' }]"
+                  />
                     <div style="margin: 16px;">
                         <van-button round block type="info" native-type="submitCode">提交</van-button>
                     </div>
@@ -104,5 +111,8 @@ export default {
         margin-left: 70px;
         margin-top: 60px;
     }
+  /deep/ .van-button--round {
+    border-radius: 10px;
+  }
 }
 </style>
