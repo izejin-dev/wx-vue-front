@@ -35,13 +35,13 @@ export default {
       wechat: `https://imgs.solui.cn/wx/640.gif`,
       quickList: [
         { title: 'XXX企业提交了再保理申请待复核', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales', time: 'yyyy-mm-dd'
-         , path: '/todoList' },
+         , src: 'https://cdn.jsdelivr.net/npm/@vant/assets/cat.jpeg' },
         { title: 'XXX企业提交了再保理申请待复核', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales', time: 'yyyy-mm-dd'
-          , path: '/todoList' },
+          , src: 'https://cdn.jsdelivr.net/npm/@vant/assets/cat.jpeg' },
         { title: 'XXX企业提交了再保理申请待复核', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales', time: 'yyyy-mm-dd'
-          , path: '/todoList' },
+          , src: 'https://cdn.jsdelivr.net/npm/@vant/assets/cat.jpeg' },
         { title: 'XXX企业提交了再保理申请待复核', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales', time: 'yyyy-mm-dd'
-          , path: '/todoList' }
+          , src: 'https://cdn.jsdelivr.net/npm/@vant/assets/cat.jpeg' }
       ]
     }
   },
@@ -108,6 +108,7 @@ export default {
     }
     .article_info {
       flex: 1;
+      margin-left: 10px;
       .item_title {
         font-size: 28px;
         line-height: 80px;

@@ -27,7 +27,7 @@
           <div class="item_total" v-if="item.total">{{ item.total }}</div>
         </li>
       </ul>
-      <div class="sign_out">退出账号</div>
+      <div class="sign_out" @click="signOut">退出账号</div>
     </div>
   </div>
 </template>
@@ -83,6 +83,12 @@ export default {
     onSelect(item) {
       this.show = false
       Toast(item.name)
+    },
+    signOut() {
+      this.$router.push({
+        path: '/home',
+        query: { isSignIn: false }
+      })
     }
   }
 }

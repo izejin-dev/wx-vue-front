@@ -3,8 +3,6 @@
   <div class="home">
     <div class="title">
       <span class="platform">云商平台</span>
-      <span class="is_sign" v-if="!isSignIn" @click="$router.push('/login')">登录</span>
-      <span class="is_sign" v-if="isSignIn">已登录</span>
     </div>
     <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
       <van-swipe-item>1</van-swipe-item>
@@ -12,6 +10,10 @@
       <van-swipe-item>3</van-swipe-item>
       <van-swipe-item>4</van-swipe-item>
     </van-swipe>
+    <div class="login_btn">
+      <div class="is_sign" v-if="!isSignIn" @click="$router.push('/login')">登录</div>
+      <div class="is_sign" v-if="isSignIn">已登录</div>
+    </div>
     <div class="center">
       <div class="card_center_box" v-if="isSignIn">
         <div class="center_title">
@@ -71,7 +73,6 @@
 
 <script>
 import { Toast } from 'vant'
-
 export default {
   name:'Home',
   data() {
@@ -92,6 +93,10 @@ export default {
   },
 
   computed: {},
+  created() {
+      this.isSignIn = this.$route.query.isSignIn
+      console.log(this.isSignIn)
+  },
 
   mounted() {},
 
@@ -116,17 +121,28 @@ export default {
 <style lang="less" scoped>
 .home{
   .title{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    text-align: center;
     padding: 30px;
     background: #fff;
     .platform{
       font-size: 30px;
       font-weight: 700;
     }
+  }
+  .login_btn {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    background: #fff;
+    border-radius: 0 21px 21px 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+    text-align: center;
+    width: 120px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 24px;
+    z-index: 99;
     .is_sign{
-      font-size: 30px;
       color: #1989fa;
     }
   }
