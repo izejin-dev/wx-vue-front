@@ -1,83 +1,114 @@
 <!-- home -->
 <template>
   <div class="about-container">
-    <div class="nav_bar">
-      <van-nav-bar
-        title="业务查询"
-        left-text="返回"
-        left-arrow
-        @click-left="onClickLeft"
-      />
-    </div>
     <div class="content_container">
       <div class="input_box">
         <input type="text" v-model="userType" placeholder="输入鼎e信搜索">
       </div>
       <!--   融资中、融资待审核   -->
-      <van-form v-show="formType == 1">
+      <van-form v-if="formType == 1">
         <van-cell-group inset  @click="toDetail" v-for="(item, index) in formList" :key="index">
-          <van-field name="融e信编号" label="融e信编号" :value="item.number"/>
-          <van-field name="融资金额" label="融资金额" :value="item.amount"/>
-          <van-field name="承兑企业" label="承兑企业" :value="item.core"/>
-          <van-field name="签收企业" label="签收企业" :value="item.sign"/>
-          <van-field name="融资企业" label="融资企业" :value="item.core"/>
-          <van-field name="业务环节" label="业务环节" :value="item.businessLink"/>
-          <van-field name="状态" label="状态" :value="item.state"/>
-          <div class="copy_btn">复制</div>
+          <template>
+            <div class="e_number_box">
+              <van-field name="融e信编号" label="融e信编号" readonly v-model="item.number" />
+              <div class="copy_btn"
+                   v-clipboard:copy="item.number"
+                   v-clipboard:success.stop="handleCopy"
+                   v-clipboard:error.stop="handleError"
+              >复制</div>
+            </div>
+          </template>
+          <van-field name="融资金额" label="融资金额" readonly v-model="item.amount"/>
+          <van-field name="承兑企业" label="承兑企业" readonly v-model="item.core"/>
+          <van-field name="签收企业" label="签收企业" readonly v-model="item.sign"/>
+          <van-field name="融资企业" label="融资企业" readonly v-model="item.core"/>
+          <van-field name="业务环节" label="业务环节" readonly v-model="item.businessLink"/>
+          <van-field name="状态" label="状态" readonly v-model="item.state"/>
         </van-cell-group>
       </van-form>
       <!--   待签收、待承兑、已承兑   -->
-      <van-form v-show="formType == 2">
+      <van-form v-if="formType == 2">
         <van-cell-group inset @click="toDetail" v-for="(item, index) in formList" :key="index">
-          <van-field name="融e信编号" label="融e信编号" :value="item.number"/>
-          <van-field name="融e信金额" label="融e信金额" :value="item.amount"/>
-          <van-field name="承兑企业" label="承兑企业" :value="item.core"/>
-          <van-field name="签收企业" label="签收企业" :value="item.sign"/>
-          <van-field name="业务环节" label="业务环节" :value="item.businessLink"/>
-          <van-field name="状态" label="状态" :value="item.state"/>
-          <div class="copy_btn">复制</div>
+          <template>
+            <div class="e_number_box">
+              <van-field name="融e信编号" label="融e信编号" readonly v-model="item.number" />
+              <div class="copy_btn"
+                   v-clipboard:copy="item.number"
+                   v-clipboard:success.stop="handleCopy"
+                   v-clipboard:error.stop="handleError"
+              >复制</div>
+            </div>
+          </template>
+          <van-field name="融e信金额" label="融e信金额" readonly v-model="item.amount"/>
+          <van-field name="承兑企业" label="承兑企业" readonly v-model="item.core"/>
+          <van-field name="签收企业" label="签收企业" readonly v-model="item.sign"/>
+          <van-field name="业务环节" label="业务环节" readonly v-model="item.businessLink"/>
+          <van-field name="状态" label="状态" readonly v-model="item.state"/>
         </van-cell-group>
       </van-form>
       <!--   正常持有   -->
-      <van-form v-show="formType == 3">
+      <van-form v-if="formType == 3">
         <van-cell-group inset @click="toDetail" v-for="(item, index) in formList" :key="index">
-          <van-field name="融e信编号" label="融e信编号" :value="item.number"/>
-          <van-field name="融e信金额" label="融e信金额" :value="item.amount"/>
-          <van-field name="承兑企业" label="承兑企业" :value="item.core"/>
-          <van-field name="签收企业" label="签收企业" :value="item.sign"/>
-          <van-field name="业务环节" label="业务环节" :value="item.businessLink"/>
-          <van-field name="状态" label="状态" :value="item.state"/>
-          <div class="copy_btn">复制</div>
+          <template>
+            <div class="e_number_box">
+              <van-field name="融e信编号" label="融e信编号" readonly v-model="item.number" />
+              <div class="copy_btn"
+                   v-clipboard:copy="item.number"
+                   v-clipboard:success.stop="handleCopy"
+                   v-clipboard:error.stop="handleError"
+              >复制</div>
+            </div>
+          </template>
+          <van-field name="融e信金额" label="融e信金额" readonly v-model="item.amount"/>
+          <van-field name="承兑企业" label="承兑企业" readonly v-model="item.core"/>
+          <van-field name="签收企业" label="签收企业" readonly v-model="item.sign"/>
+          <van-field name="业务环节" label="业务环节" readonly v-model="item.businessLink"/>
+          <van-field name="状态" label="状态" readonly v-model="item.state"/>
         </van-cell-group>
       </van-form>
       <!--   流转中   -->
-      <van-form v-show="formType == 4">
+      <van-form v-if="formType == 4">
         <van-cell-group inset @click="toDetail" v-for="(item, index) in formList" :key="index">
-          <van-field name="融e信编号" label="融e信编号" :value="item.number"/>
-          <van-field name="流转金额" label="流转金额" :value="item.amount"/>
-          <van-field name="承兑企业" label="承兑企业" :value="item.core"/>
-          <van-field name="签收企业" label="签收企业" :value="item.sign"/>
-          <van-field name="接收企业" label="接收企业" :value="item.bank"/>
-          <van-field name="业务环节" label="业务环节" :value="item.businessLink"/>
-          <van-field name="状态" label="状态" :value="item.state"/>
-          <div class="copy_btn">复制</div>
+          <template>
+            <div class="e_number_box">
+              <van-field name="融e信编号" label="融e信编号" readonly v-model="item.number" />
+              <div class="copy_btn"
+                   v-clipboard:copy="item.number"
+                   v-clipboard:success.stop="handleCopy"
+                   v-clipboard:error.stop="handleError"
+              >复制</div>
+            </div>
+          </template>
+          <van-field name="流转金额" label="流转金额" readonly v-model="item.amount"/>
+          <van-field name="承兑企业" label="承兑企业" readonly v-model="item.core"/>
+          <van-field name="签收企业" label="签收企业" readonly v-model="item.sign"/>
+          <van-field name="接收企业" label="接收企业" readonly v-model="item.bank"/>
+          <van-field name="业务环节" label="业务环节" readonly v-model="item.businessLink"/>
+          <van-field name="状态" label="状态" readonly v-model="item.state"/>
         </van-cell-group>
       </van-form>
       <!--   应还、应收   -->
-      <van-form v-show="formType == 5">
+      <van-form v-if="formType == 5">
         <van-cell-group inset @click="toDetail" v-for="(item, index) in formList" :key="index">
-          <van-field name="融e信编号" label="融e信编号" :value="item.number"/>
-          <van-field name="融e信金额" label="融e信金额" :value="item.amount"/>
-          <van-field name="承兑企业" label="承兑企业" :value="item.core"/>
-          <van-field name="接收企业" label="接收企业" :value="item.supplier"/>
-          <van-field name="资金方" label="资金方" :value="item.bank"/>
-          <van-field name="融e信承诺付款日" label="融e信承诺付款日" :value="item.date"/>
-          <van-field name="状态" label="状态" :value="item.state"/>
-          <div class="copy_btn">复制</div>
+          <template>
+            <div class="e_number_box">
+              <van-field name="融e信编号" label="融e信编号" readonly v-model="item.number"/>
+              <div class="copy_btn"
+                   v-clipboard:copy="item.number"
+                   v-clipboard:success.stop="handleCopy"
+                   v-clipboard:error.stop="handleError"
+              >复制</div>
+            </div>
+          </template>
+          <van-field name="融e信金额" label="融e信金额" readonly v-model="item.amount"/>
+          <van-field name="承兑企业" label="承兑企业" readonly v-model="item.core"/>
+          <van-field name="接收企业" label="接收企业" readonly v-model="item.supplier"/>
+          <van-field name="资金方" label="资金方" readonly v-model="item.bank"/>
+          <van-field name="融e信承诺付款日" label="融e信承诺付款日" readonly v-model="item.date"/>
+          <van-field name="状态" label="状态" readonly v-model="item.state"/>
         </van-cell-group>
       </van-form>
     </div>
-
   </div>
 </template>
 
@@ -85,12 +116,16 @@
 // 请求接口
 import { getUserInfo } from '@/api/user.js'
 import { mapGetters } from 'vuex'
+import { Notify } from 'vant';
 export default {
   data() {
     return {
       wechat: `https://imgs.solui.cn/wx/640.gif`,
       userType: '', // 1供应商，2核心企业，3资金方
       formType: 0, // 1-融资中、融资待审核,2-待签收、待承兑、已承兑,3-正常持有,4-流转中,5-应还、应收
+      components: {
+        VanNotify: Notify.Component
+      },
       formList: [
         {
           number: 123,
@@ -136,31 +171,29 @@ export default {
     doDispatch() {
       this.$store.dispatch('setUserName', '12313')
     },
-    onClickLeft() {
-      history.back()
-    },
-    onClickRight() {
-      // history.back()
-      console.log('一键已读')
-    },
     toDetail(item) {
       this.$router.push('/businessDetail')
     },
     changeFormType(e) {
       this.formType = e
+    },
+    handleCopy(e) {
+      this.$notify({
+        message: '复制成功',
+        type: 'success'
+      })
+    },
+    handleError(e) {
+      this.$notify({
+        message: '复制失败',
+        type: 'danger',
+      })
     }
   }
 }
 </script>
 <style lang="less" scoped>
-.nav_bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
 .content_container {
-  margin-top: 90px;
   .input_box {
     padding: 20px 10px;
     text-align: center;
@@ -202,12 +235,13 @@ export default {
   position: relative;
   margin-top: 40px;
 }
+.e_number_box {
+  display: flex;
+}
 .copy_btn {
-  position: absolute;
-  top: 0;
-  right: 0;
   color: #0000FF;
-  padding: 20px 30px;
+  padding: 20px;
+  width: 60px;
 }
 .about-container {
   /* 你的命名空间 */

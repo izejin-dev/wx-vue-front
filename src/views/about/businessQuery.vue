@@ -1,14 +1,6 @@
 <!-- home -->
 <template>
   <div class="about-container">
-    <div class="nav_bar">
-      <van-nav-bar
-        title="业务查询"
-        left-text="返回"
-        left-arrow
-        @click-left="onClickLeft"
-      />
-    </div>
     <div class="content_container">
       <ul class="business_query" v-if="userType == 1">
         <li class="business_query_item" @click="changeFormType(2)">待签收</li>
@@ -66,13 +58,6 @@ export default {
     doDispatch() {
       this.$store.dispatch('setUserName', '12313')
     },
-    onClickLeft() {
-      history.back()
-    },
-    onClickRight() {
-      // history.back()
-      console.log('一键已读')
-    },
     toDetail(item) {
       this.$router.push('/businessDetail')
     },
@@ -84,17 +69,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.nav_bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-.content_container {
-  margin-top: 90px;
-}
 .business_query {
-  margin-top: 40px;
   background: #fff;
   .business_query_item {
     list-style: none;

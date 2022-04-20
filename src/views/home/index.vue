@@ -1,25 +1,25 @@
 <!-- home -->
 <template>
   <div class="home">
-    <div class="title">
-      <span class="platform">云商平台</span>
+    <div class="swipe_box">
+      <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+        <van-swipe-item>1</van-swipe-item>
+        <van-swipe-item>2</van-swipe-item>
+        <van-swipe-item>3</van-swipe-item>
+        <van-swipe-item>4</van-swipe-item>
+      </van-swipe>
+      <div class="login_btn">
+        <div class="is_sign" v-if="!isSignIn" @click="$router.push('/login')">登录</div>
+        <div class="is_sign" v-if="isSignIn">已登录</div>
+      </div>
     </div>
-    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-      <van-swipe-item>1</van-swipe-item>
-      <van-swipe-item>2</van-swipe-item>
-      <van-swipe-item>3</van-swipe-item>
-      <van-swipe-item>4</van-swipe-item>
-    </van-swipe>
-    <div class="login_btn">
-      <div class="is_sign" v-if="!isSignIn" @click="$router.push('/login')">登录</div>
-      <div class="is_sign" v-if="isSignIn">已登录</div>
-    </div>
+
     <div class="center">
       <div class="card_center_box" v-if="isSignIn">
         <div class="center_title">
           <div class="center_title_info">进度查询</div>
           <van-cell is-link title="切换" @click="show = true" />
-          <van-action-sheet v-model="show" :actions="actions" cancel-text="取消" description="选择租户平台" @select="onSelect" />
+          <van-action-sheet v-model="show" :actions="actions" cancel-text="取消" description="请选择要更换的企业" @select="onSelect" />
         </div>
         <div class="cards">
           <div class="box quick-item" v-for="(item, index) in quickList" :key="index" @click="toDetail(item)">
@@ -80,9 +80,9 @@ export default {
       show: false,
       isSignIn: false, // 是否登录
       actions: [
-        { name: '租户一' },
-        { name: '租户二' },
-        { name: '租户三' }
+        { name: '万钧文化', userName: '万钧文化用户一' },
+        { name: '神州租车', userName: '神州租车用户一' },
+        { name: '西斯特科技', userName: '西斯特科技用户一' }
       ],
       quickList: [
         { title: '待办提醒', total: '99', iconSrc: '', path: '/todoList' },
@@ -129,17 +129,21 @@ export default {
       font-weight: 700;
     }
   }
+  .swipe_box {
+    position: relative;
+  }
   .login_btn {
-    position: fixed;
-    top: 120px;
-    left: 0;
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
     background: #fff;
-    border-radius: 0 21px 21px 0;
+    border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, .2);
     text-align: center;
-    width: 120px;
-    height: 42px;
-    line-height: 42px;
+    width: 100px;
+    height: 80px;
+    line-height: 80px;
     font-size: 24px;
     z-index: 99;
     .is_sign{

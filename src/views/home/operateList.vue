@@ -1,14 +1,6 @@
 <!-- home -->
 <template>
   <div class="container">
-    <div class="nav_bar">
-      <van-nav-bar
-        title="操作页标题"
-        left-text="返回"
-        left-arrow
-        @click-left="onClickLeft"
-      />
-    </div>
     <div class="content_container">
       <ul class="todo_list">
         <li class="todo_list_item" v-for="(item, index) in quickList" :key="index" @click="toDetail(item, index)">
@@ -69,28 +61,18 @@ export default {
     },
     toDetail(item, index) {
       console.log(index)
-      this.$router.push('/proDetail')
+      this.$router.push('/operateDetail')
     }
   }
 }
 </script>
 <style lang="less" scoped>
-.nav_bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-.content_container {
-  margin-top: 90px;
-}
 .todo_list {
-  margin-top: 40px;
   background: #fff;
   .todo_list_item {
     list-style: none;
     line-height: 40px;
-    padding: 0 42px;
+    padding: 20px 42px;
     display: flex;
     height: 240px;
     overflow: hidden;
@@ -108,14 +90,20 @@ export default {
     }
     .article_info {
       flex: 1;
-      margin-left: 10px;
+      margin-left: 20px;
       .item_title {
         font-size: 28px;
         line-height: 80px;
       }
-      .item_time {
-        line-height: 60px;
+      .item_content {
+        line-height: 30px;
         color: rgba(51, 51, 51, .5);
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: 20px;
       }
     }
   }

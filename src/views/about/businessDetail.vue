@@ -1,14 +1,6 @@
 <!-- home -->
 <template>
   <div class="about-container">
-    <div class="nav_bar">
-      <van-nav-bar
-        title="详情"
-        left-text="返回"
-        left-arrow
-        @click-left="onClickLeft"
-      />
-    </div>
     <div class="content_container">
       <!--   业务详情   -->
       <van-form  >
@@ -39,7 +31,7 @@ export default {
     return {
       wechat: `https://imgs.solui.cn/wx/640.gif`,
       formData: {
-        number: '',
+        number: '66',
         amount: '999',
         core: 'xxxx核心企业',
         sign: 'xxxx核心企业',
@@ -47,10 +39,8 @@ export default {
         bank: 'xxx银行',
         businessLink: 'xxx银行',
         date: '2021-11-12',
-        state: '未逾期',
-
-
-      },
+        state: '未逾期'
+      }
     }
   },
   computed: {
@@ -72,13 +62,6 @@ export default {
     doDispatch() {
       this.$store.dispatch('setUserName', '12313')
     },
-    onClickLeft() {
-      history.back()
-    },
-    onClickRight() {
-      // history.back()
-      console.log('一键已读')
-    },
     toDetail(item) {
       console.log(item.path)
     },
@@ -86,18 +69,6 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.nav_bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-.content_container {
-  margin-top: 90px;
-}
-.van-form {
-  margin-top: 40px;
-}
 .van-cell-group {
   position: relative;
 }

@@ -21,7 +21,7 @@
                         :rules="[{ required: true, message: '请填写密码' }]"
                     />
                     <div style="margin: 16px;">
-                        <van-button round block type="info" native-type="submitUser">提交</van-button>
+                        <van-button round block type="info" native-type="submitUser" @click="signIn">提交</van-button>
                     </div>
                 </van-form>
             </van-tab>
@@ -56,14 +56,11 @@
                     :rules="[{ required: true, message: '请填写验证码' }]"
                   />
                     <div style="margin: 16px;">
-                        <van-button round block type="info" native-type="submitCode">提交</van-button>
+                        <van-button round block type="info" native-type="submitCode" @click="signIn">提交</van-button>
                     </div>
                 </van-form>
             </van-tab>
         </van-tabs>
-    <div style="margin: 16px;">
-      <van-button round block type="info" @click="signIn">登录成功</van-button>
-    </div>
   </div>
 </template>
 

@@ -1,14 +1,6 @@
 <!-- home -->
 <template>
   <div class="container">
-    <div class="nav_bar">
-      <van-nav-bar
-        title="产品详情"
-        left-text="返回"
-        left-arrow
-        @click-left="onClickLeft"
-      />
-    </div>
     <div class="content_container">
       <div class="article_title">{{ articleTitle }}</div>
       <div class="article_info">{{ articleDetail }}</div>
@@ -54,14 +46,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.nav_bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
 .content_container {
-  margin-top: 90px;
   padding: 40px;
   .article_title {
     font-size: 32px;

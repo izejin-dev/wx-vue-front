@@ -22,6 +22,10 @@ import WechatPlugin from '@/utils/wechatPlugin'
 import { NavBar, Icon } from 'vant';
 import { Form, Field, CellGroup } from 'vant';
 import { ActionSheet } from 'vant';
+import VueClipboard from 'vue-clipboard2'
+Vue.use(VueClipboard)
+import { Notify } from 'vant'
+Vue.use(Notify)
 Vue.use(ActionSheet)
 Vue.use(NavBar)
 Vue.use(Icon)

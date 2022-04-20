@@ -1,16 +1,6 @@
 <!-- home -->
 <template>
   <div class="about-container">
-    <div class="nav_bar">
-      <van-nav-bar
-        title="进度通知"
-        left-text="返回"
-        right-text="一键已读"
-        left-arrow
-        @click-left="onClickLeft"
-        @click-right="onClickRight"
-      />
-    </div>
     <div class="content_container">
       <ul class="todo_list">
         <li class="todo_list_item" v-for="(item,index) in quickList" :key="index" @click="toDetail(item)">
@@ -63,13 +53,6 @@ export default {
     doDispatch() {
       this.$store.dispatch('setUserName', '12313')
     },
-    onClickLeft() {
-      history.back()
-    },
-    onClickRight() {
-      // history.back()
-      console.log('一键已读')
-    },
     toDetail(item) {
       console.log(item.path)
     }
@@ -77,17 +60,7 @@ export default {
 }
 </script>
 <style lang="less">
-.nav_bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-.content_container {
-  margin-top: 90px;
-}
 .todo_list {
-  margin-top: 40px;
   background: #fff;
   .todo_list_item {
     list-style: none;
@@ -99,6 +72,15 @@ export default {
     .item_title {
       font-size: 28px;
       line-height: 80px;
+    }
+    .item_content {
+      line-height: 30px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      font-size: 20px;
     }
     .item_time {
       line-height: 60px;

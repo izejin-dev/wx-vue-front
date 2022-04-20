@@ -1,22 +1,14 @@
 <!-- home -->
 <template>
   <div class="about-container">
-    <div class="nav_bar">
-      <van-nav-bar
-        title="我的"
-        left-text="返回"
-        left-arrow
-        @click-left="onClickLeft"
-      />
-    </div>
     <div class="content_container">
       <div class="enterprise_info">
         <div class="enterprise_name_box">
-          <div class="enterprise_name">企业名称</div>
+          <div class="enterprise_name">{{ coreName }}</div>
           <van-cell is-link title="切换" @click="show = true" />
-          <van-action-sheet v-model="show" :actions="actions" cancel-text="取消" description="选择租户平台" @select="onSelect" />
+          <van-action-sheet v-model="show" :actions="actions" cancel-text="取消" description="请选择要更换的企业" @select="onSelect" />
         </div>
-        <div class="user_name">当前登录的用户姓名</div>
+        <div class="user_name">{{ userName }}</div>
       </div>
       <ul class="quick_list">
         <li class="quick_list_item" v-for="(item,index) in quickList" :key="index" @click="toDetail(item)">
@@ -47,11 +39,13 @@ export default {
         { title: '业务查询', total: '', iconSrc: '', path: '/businessQuery' },
       ],
       show: false,
+      coreName: '测试公司',
+      userName: '测试用户',
       actions: [
-        { name: '租户一' },
-        { name: '租户二' },
-        { name: '租户三' },
-      ],
+        { name: '万钧文化', userName: '万钧文化用户一' },
+        { name: '神州租车', userName: '神州租车用户一' },
+        { name: '西斯特科技', userName: '西斯特科技用户一' }
+      ]
     }
   },
   computed: {
@@ -73,9 +67,6 @@ export default {
     doDispatch() {
       this.$store.dispatch('setUserName', '12313')
     },
-    onClickLeft() {
-      history.back()
-    },
     toDetail(item) {
       console.log(item.path)
       this.$router.push(item.path)
@@ -83,6 +74,8 @@ export default {
     onSelect(item) {
       this.show = false
       Toast(item.name)
+      this.coreName = item.name
+      this.userName = item.userName
     },
     signOut() {
       this.$router.push({
@@ -94,15 +87,6 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.nav_bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-.content_container {
-  margin-top: 90px;
-}
 .enterprise_info {
   padding: 0 42px 40px;
   background: #fff;
@@ -165,7 +149,6 @@ export default {
 }
 .sign_out {
   color: #fff;
-  //margin: 0 42px;
   position: absolute;
   left: 50%;
   bottom: 180px;
