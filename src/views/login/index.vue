@@ -109,10 +109,17 @@ export default {
 
     },
     signIn() {
-      this.$router.push({
-        path: 'home',
-        query: { isSignIn: true }
-      })
+      if (this.imgCode == this.identifyCode) {
+        this.$router.push({
+          path: 'home',
+          query: { isSignIn: true }
+        })
+      }else {
+        this.$notify({
+          message: '图形验证码不正确',
+          type: 'danger'
+        })
+      }
     },
     refreshCode() {
       this.identifyCode = ''
