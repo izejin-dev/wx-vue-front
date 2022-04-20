@@ -8,7 +8,7 @@
           <van-cell is-link title="切换" @click="show = true" />
           <van-action-sheet v-model="show" :actions="actions" cancel-text="取消" description="请选择要更换的企业" @select="onSelect" />
         </div>
-        <div class="user_name">{{ userName }}</div>
+        <div class="user_name">{{ usersName }}</div>
       </div>
       <ul class="quick_list">
         <li class="quick_list_item" v-for="(item,index) in quickList" :key="index" @click="toDetail(item)">
@@ -40,7 +40,7 @@ export default {
       ],
       show: false,
       coreName: '测试公司',
-      userName: '测试用户',
+      usersName: '测试用户',
       actions: [
         { name: '万钧文化', userName: '万钧文化用户一' },
         { name: '神州租车', userName: '神州租车用户一' },
@@ -75,7 +75,7 @@ export default {
       this.show = false
       Toast(item.name)
       this.coreName = item.name
-      this.userName = item.userName
+      this.usersName = item.userName
     },
     signOut() {
       this.$router.push({
