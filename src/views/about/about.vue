@@ -21,6 +21,8 @@
       </ul>
       <div class="sign_out" @click="signOut">退出账号</div>
     </div>
+    <van-dialog v-model:show="dialogShow" title="是否确认退出？" show-cancel-button @confirm="toHome">
+    </van-dialog>
   </div>
 </template>
 
@@ -39,6 +41,7 @@ export default {
         { title: '业务查询', total: '', iconSrc: '', path: '/businessQuery' },
       ],
       show: false,
+      dialogShow: false,
       coreName: '测试公司',
       usersName: '测试用户',
       actions: [
@@ -78,6 +81,9 @@ export default {
       this.usersName = item.userName
     },
     signOut() {
+      this.dialogShow = true
+    },
+    toHome() {
       this.$router.push({
         path: '/home',
         query: { isSignIn: false }
