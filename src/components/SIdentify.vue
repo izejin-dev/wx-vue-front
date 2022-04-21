@@ -53,7 +53,7 @@ export default {
     },
     contentWidth: {
       type: Number,
-      default: 120
+      default: 100
     },
     contentHeight: {
       type: Number,
@@ -98,7 +98,7 @@ export default {
       ctx.fillStyle = this.randomColor(this.colorMin, this.colorMax);
       ctx.font =
         this.randomNum(this.fontSizeMin, this.fontSizeMax) + "px SimHei";
-      let x = (i + 1) * (this.contentWidth / (this.identifyCode.length + 1));
+      let x = (i + 1) * (this.contentWidth / (this.identifyCode.length + 2));
       let y = this.randomNum(this.fontSizeMax, this.contentHeight - 5);
       var deg = this.randomNum(-10, 10);
       // 修改坐标原点和旋转角度
@@ -154,3 +154,12 @@ export default {
   }
 };
 </script>
+<style lang="less" scoped>
+.s-canvas {
+  height: 100%;
+  canvas {
+    width: 100%;
+    height: 100%;
+  }
+}
+</style>
