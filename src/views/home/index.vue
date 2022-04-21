@@ -79,11 +79,6 @@ export default {
     return {
       show: false,
       isSignIn: false, // 是否登录
-      actions: [
-        { name: '万钧文化', userName: '万钧文化用户一' },
-        { name: '神州租车', userName: '神州租车用户一' },
-        { name: '西斯特科技', userName: '西斯特科技用户一' }
-      ],
       quickList: [
         { title: '待办提醒', total: '99', iconSrc: '', path: '/todoList' },
         { title: '进度通知', total: '18', iconSrc: '', path: '/progressNotice' },
