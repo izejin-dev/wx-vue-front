@@ -140,9 +140,7 @@ export default {
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, .2);
     text-align: center;
-    width: 100px;
-    height: 80px;
-    line-height: 80px;
+    padding: 20px 15px;
     font-size: 24px;
     z-index: 99;
     cursor: pointer;
