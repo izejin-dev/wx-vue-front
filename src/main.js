@@ -24,6 +24,8 @@ import { Form, Field, CellGroup } from 'vant';
 import { ActionSheet } from 'vant';
 import VueClipboard from 'vue-clipboard2'
 Vue.use(VueClipboard)
+import { Dialog } from 'vant';
+Vue.use(Dialog)
 import { Notify } from 'vant'
 Vue.use(Notify)
 Vue.use(ActionSheet)

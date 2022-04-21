@@ -21,7 +21,7 @@
                         :rules="[{ required: true, message: '请填写密码' }]"
                     />
                     <div style="margin: 16px;">
-                        <van-button round block type="info" native-type="submitUser" @click="signIn">提交</van-button>
+                        <van-button round block type="info" native-type="submitUser" @click="signIn">登录</van-button>
                     </div>
                 </van-form>
             </van-tab>
@@ -56,11 +56,18 @@
                     :rules="[{ required: true, message: '请填写验证码' }]"
                   />
                     <div style="margin: 16px;">
-                        <van-button round block type="info" native-type="submitCode" @click="signIn">提交</van-button>
+                        <van-button round block type="info" native-type="submitCode" @click="signIn">登录</van-button>
                     </div>
                 </van-form>
             </van-tab>
         </van-tabs>
+    <van-dialog v-model:show="show" title="请选择登录的企业" show-cancel-button @confirm="toHome">
+      <ul class="enterprise_name_list">
+        <li class="enterprise_name_item" v-for="(item, index) in actions" :key="index">
+          <van-button type="default" size="large" @click="selectName(item)" :class="isSelect == item.index ? 'active':''">{{ item.name }}</van-button>
+        </li>
+      </ul>
+    </van-dialog>
   </div>
 </template>
 
@@ -75,8 +82,8 @@ export default {
       username: '',
       password: '',
       phone: '',
-      imgCode: '',
-      code: '',
+      imgCode: '', // 图形验证码
+      code: '', // 验证码
       identifyCode: '',
       identifyCodes: '0123456789abcdwerwshdjeJKDHRJHKOOPLMKQ', // 绘制的随机数
       telRules: [
@@ -90,7 +97,15 @@ export default {
           },
           message: '请输入正确格式的手机号'
         }
-      ]
+      ],
+      show: false,
+      actions: [
+        { name: '万钧文化', userName: '万钧文化用户一', index: 0 },
+        { name: '神州租车', userName: '神州租车用户一', index: 1 },
+        { name: '西斯特科技', userName: '西斯特科技用户一', index: 2 }
+      ],
+      enterpriseName: '', // 选择登录的公司名称
+      isSelect: ''
     }
   },
 
@@ -108,18 +123,30 @@ export default {
     submitUser() {
 
     },
+    selectName(item) {
+      this.enterpriseName = item.name
+      this.isSelect = item.index
+    },
     signIn() {
-      if (this.imgCode == this.identifyCode) {
-        this.$router.push({
-          path: 'home',
-          query: { isSignIn: true }
-        })
-      }else {
-        this.$notify({
-          message: '图形验证码不正确',
-          type: 'danger'
-        })
-      }
+      this.show = true
+
+      // if (this.imgCode == this.identifyCode) {
+      //   this.$router.push({
+      //     path: 'home',
+      //     query: { isSignIn: true }
+      //   })
+      // }else {
+      //   this.$notify({
+      //     message: '图形验证码不正确',
+      //     type: 'danger'
+      //   })
+      // }
+    },
+    toHome() {
+      this.$router.push({
+              path: 'home',
+              query: { isSignIn: true, enterpriseName: this.enterpriseName }
+            })
     },
     refreshCode() {
       this.identifyCode = ''
@@ -168,5 +195,15 @@ export default {
   /deep/ .van-button--round {
     border-radius: 10px;
   }
+}
+.enterprise_name_list {
+  text-align: center;
+  .enterprise_name_item {
+    margin: 10px 0;
+  }
+}
+.active {
+  color: #fff;
+  background-color: #1989fa;
 }
 </style>

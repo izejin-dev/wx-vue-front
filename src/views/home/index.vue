@@ -8,9 +8,8 @@
         <van-swipe-item>3</van-swipe-item>
         <van-swipe-item>4</van-swipe-item>
       </van-swipe>
-      <div class="login_btn">
-        <div class="is_sign" v-if="!isSignIn" @click="$router.push('/login')">登录</div>
-        <div class="is_sign" v-if="isSignIn">已登录</div>
+      <div class="login_btn" v-if="!isSignIn">
+        <div class="is_sign" @click="$router.push('/login')">登录</div>
       </div>
     </div>
 
