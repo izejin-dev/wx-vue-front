@@ -4,8 +4,8 @@
     <div class="content_container">
       <div class="enterprise_info">
         <div class="enterprise_name_box">
-          <div class="enterprise_name">{{ $store.state.app.coreName }}</div>
-          <van-cell is-link title="切换" @click="show = true" />
+          <div class="enterprise_name">{{ $store.state.app.coreName?$store.state.app.coreName:'未登录' }}</div>
+          <van-cell is-link title="切换" @click="show = true" v-if="$store.state.app.coreName"/>
           <van-action-sheet v-model="show" :actions="$store.state.app.enterPrise" cancel-text="取消" description="请选择要更换的企业" @select="onSelect" />
         </div>
         <div class="user_name">{{ $store.state.app.usersName }}</div>
@@ -16,10 +16,10 @@
             <van-icon name="chat-o" />
             {{ item.title }}
           </div>
-          <div class="item_total" v-if="item.total">{{ item.total }}</div>
+          <div class="item_total" v-if="item.total && $store.state.app.coreName">{{ item.total }}</div>
         </li>
       </ul>
-      <div class="sign_out" @click="signOut">退出账号</div>
+      <div class="sign_out" @click="signOut" v-if="$store.state.app.coreName">退出账号</div>
     </div>
     <van-dialog v-model:show="dialogShow" title="是否确认退出？" show-cancel-button @confirm="toHome">
     </van-dialog>
@@ -82,6 +82,8 @@ export default {
     },
     toHome() {
       this.$store.state.app.isSignIn = false
+      this.$store.state.app.coreName = ''
+      this.$store.state.app.usersName = ''
       this.$router.push({
         path: '/home',
         query: { isSignIn: false }
