@@ -145,6 +145,7 @@ export default {
     line-height: 80px;
     font-size: 24px;
     z-index: 99;
+    cursor: pointer;
     .is_sign{
       color: #1989fa;
     }
@@ -175,6 +176,7 @@ export default {
       }
       .center_title_btn {
         width: auto;
+        cursor: pointer;
       }
       .van-cell {
         width: auto;
@@ -194,6 +196,7 @@ export default {
       background: #fff;
       .box{
         flex: 1;
+        cursor: pointer;
         height: 100%;
         display: flex;
         justify-content: center;

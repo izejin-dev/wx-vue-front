@@ -76,6 +76,7 @@ export default {
     line-height: 80px;
     padding: 0 42px;
     text-align: center;
+    cursor: pointer;
     &:not(:nth-child(1)) {
       border-top: 1px solid #ebedf0;
     }

@@ -242,6 +242,7 @@ export default {
   color: #0000FF;
   padding: 20px;
   width: 60px;
+  cursor: pointer;
 }
 .about-container {
   /* 你的命名空间 */

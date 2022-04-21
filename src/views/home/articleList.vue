@@ -75,6 +75,7 @@ export default {
     padding: 20px 42px;
     display: flex;
     height: 240px;
+    cursor: pointer;
     overflow: hidden;
     .img_box {
       width: 200px;

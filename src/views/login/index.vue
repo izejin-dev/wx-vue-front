@@ -162,6 +162,7 @@ export default {
         this.identifyCode += data[this.randomNum(0, data.length - 1)]
       }
     },
+    onSubmit() {},
     submitCode() {
 
     }

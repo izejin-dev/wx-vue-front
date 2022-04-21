@@ -5,16 +5,16 @@
       <!--   业务详情   -->
       <van-form  >
         <van-cell-group >
-          <van-field name="融e信编号" label="融e信编号" :value="formData.number"/>
-          <van-field name="金额" label="金额" :value="formData.amount"/>
-          <van-field name="开立企业" label="开立企业" value="XXXX 企业"/>
-          <van-field name="承兑企业" label="承兑企业" value="XXXX 企业"/>
-          <van-field name="保荐企业" label="保荐企业" value=""/>
-          <van-field name="签收企业" label="签收企业" value="XXX供应商"/>
-          <van-field name="承兑日期" label="承兑日期" value="yyyy-mm-dd"/>
-          <van-field name="签收日期" label="签收日期" value="yyyy-mm-dd"/>
-          <van-field name="业务环节" label="业务环节" value="融资"/>
-          <van-field name="状态" label="状态" value="待复核"/>
+          <van-field name="融e信编号" label="融e信编号" readonly :value="formData.number"/>
+          <van-field name="金额" label="金额" readonly :value="formData.amount"/>
+          <van-field name="开立企业" label="开立企业" readonly value="XXXX 企业"/>
+          <van-field name="承兑企业" label="承兑企业" readonly value="XXXX 企业"/>
+          <van-field name="保荐企业" label="保荐企业" readonly value=""/>
+          <van-field name="签收企业" label="签收企业" readonly value="XXX供应商"/>
+          <van-field name="承兑日期" label="承兑日期" readonly value="yyyy-mm-dd"/>
+          <van-field name="签收日期" label="签收日期" readonly value="yyyy-mm-dd"/>
+          <van-field name="业务环节" label="业务环节" readonly value="融资"/>
+          <van-field name="状态" label="状态" readonly value="待复核"/>
         </van-cell-group>
       </van-form>
     </div>
