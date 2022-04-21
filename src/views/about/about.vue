@@ -4,11 +4,11 @@
     <div class="content_container">
       <div class="enterprise_info">
         <div class="enterprise_name_box">
-          <div class="enterprise_name">{{ coreName }}</div>
+          <div class="enterprise_name">{{ $store.state.app.coreName }}</div>
           <van-cell is-link title="切换" @click="show = true" />
-          <van-action-sheet v-model="show" :actions="actions" cancel-text="取消" description="请选择要更换的企业" @select="onSelect" />
+          <van-action-sheet v-model="show" :actions="$store.state.app.enterPrise" cancel-text="取消" description="请选择要更换的企业" @select="onSelect" />
         </div>
-        <div class="user_name">{{ usersName }}</div>
+        <div class="user_name">{{ $store.state.app.usersName }}</div>
       </div>
       <ul class="quick_list">
         <li class="quick_list_item" v-for="(item,index) in quickList" :key="index" @click="toDetail(item)">
@@ -42,13 +42,8 @@ export default {
       ],
       show: false,
       dialogShow: false,
-      coreName: '测试公司',
-      usersName: '测试用户',
-      actions: [
-        { name: '万钧文化', userName: '万钧文化用户一' },
-        { name: '神州租车', userName: '神州租车用户一' },
-        { name: '西斯特科技', userName: '西斯特科技用户一' }
-      ]
+      coreName: '',
+      usersName: ''
     }
   },
   computed: {
@@ -79,11 +74,14 @@ export default {
       Toast(item.name)
       this.coreName = item.name
       this.usersName = item.userName
+      this.$store.state.app.coreName = item.name
+      this.$store.state.app.usersName = item.userName
     },
     signOut() {
       this.dialogShow = true
     },
     toHome() {
+      this.$store.state.app.isSignIn = false
       this.$router.push({
         path: '/home',
         query: { isSignIn: false }

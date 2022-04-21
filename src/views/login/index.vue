@@ -63,7 +63,7 @@
         </van-tabs>
     <van-dialog v-model:show="show" title="请选择登录的企业" show-cancel-button @confirm="toHome">
       <ul class="enterprise_name_list">
-        <li class="enterprise_name_item" v-for="(item, index) in actions" :key="index">
+        <li class="enterprise_name_item" v-for="(item, index) in $store.state.app.enterPrise" :key="index">
           <van-button type="default" size="large" @click="selectName(item)" :class="isSelect == item.index ? 'active':''">{{ item.name }}</van-button>
         </li>
       </ul>
@@ -99,13 +99,8 @@ export default {
         }
       ],
       show: false,
-      actions: [
-        { name: '万钧文化', userName: '万钧文化用户一', index: 0 },
-        { name: '神州租车', userName: '神州租车用户一', index: 1 },
-        { name: '西斯特科技', userName: '西斯特科技用户一', index: 2 }
-      ],
       enterpriseName: '', // 选择登录的公司名称
-      isSelect: ''
+      isSelect: 0
     }
   },
 
@@ -126,6 +121,8 @@ export default {
     selectName(item) {
       this.enterpriseName = item.name
       this.isSelect = item.index
+      this.$store.state.app.coreName = item.name
+      this.$store.state.app.usersName = item.userName
     },
     signIn() {
       this.show = true
@@ -143,9 +140,10 @@ export default {
       // }
     },
     toHome() {
+      this.$store.state.app.isSignIn = true
       this.$router.push({
               path: 'home',
-              query: { isSignIn: true, enterpriseName: this.enterpriseName }
+              query: { isSignIn: this.$store.state.app.isSignIn, enterpriseName: this.enterpriseName }
             })
     },
     refreshCode() {

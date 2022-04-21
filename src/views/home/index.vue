@@ -8,17 +8,17 @@
         <van-swipe-item>3</van-swipe-item>
         <van-swipe-item>4</van-swipe-item>
       </van-swipe>
-      <div class="login_btn" v-if="!isSignIn">
+      <div class="login_btn" v-if="!$store.state.app.isSignIn">
         <div class="is_sign" @click="$router.push('/login')">登录</div>
       </div>
     </div>
 
     <div class="center">
-      <div class="card_center_box" v-if="isSignIn">
+      <div class="card_center_box" v-if="$store.state.app.isSignIn">
         <div class="center_title">
           <div class="center_title_info">进度查询</div>
           <van-cell is-link title="切换" @click="show = true" />
-          <van-action-sheet v-model="show" :actions="actions" cancel-text="取消" description="请选择要更换的企业" @select="onSelect" />
+          <van-action-sheet v-model="show" :actions="$store.state.app.enterPrise" cancel-text="取消" description="请选择要更换的企业" @select="onSelect" />
         </div>
         <div class="cards">
           <div class="box quick-item" v-for="(item, index) in quickList" :key="index" @click="toDetail(item)">
@@ -27,7 +27,7 @@
           </div>
         </div>
       </div>
-      <div class="card_center_box" v-if="isSignIn">
+      <div class="card_center_box" v-if="$store.state.app.isSignIn">
         <div class="center_title">
           <div class="center_title_info">操作手册</div>
           <div class="center_title_btn" @click="toOperateList">更多</div>
@@ -72,6 +72,7 @@
 
 <script>
 import { Toast } from 'vant'
+import { mapMutations } from "vuex";
 export default {
   name:'Home',
   data() {
@@ -94,7 +95,6 @@ export default {
   computed: {},
   created() {
       this.isSignIn = this.$route.query.isSignIn
-      console.log(this.isSignIn)
   },
 
   mounted() {},
@@ -103,6 +103,8 @@ export default {
     onSelect(item) {
       this.show = false
       Toast(item.name)
+      this.$store.state.app.coreName = item.name
+      this.$store.state.app.usersName = item.userName
     },
     toDetail(item) {
       console.log(item.path)
