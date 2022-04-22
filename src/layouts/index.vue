@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     showBars() {
-      if (!this.$store.state.app.isSignIn) {
+      if (!this.$store.state.app.isLogin) {
         return false;
       }else if (this.$route.meta.showBars) {
         return this.$route.meta.showBars

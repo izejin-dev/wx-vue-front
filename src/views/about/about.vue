@@ -4,11 +4,11 @@
     <div class="content_container">
       <div class="enterprise_info">
         <div class="enterprise_name_box">
-          <div class="enterprise_name">{{ $store.state.app.coreName?$store.state.app.coreName:'未登录' }}</div>
-          <van-cell is-link title="切换" @click="show = true" v-if="$store.state.app.coreName"/>
-          <van-action-sheet v-model="show" :actions="$store.state.app.enterPrise" cancel-text="取消" description="请选择要更换的企业" @select="onSelect" />
+          <div class="enterprise_name">{{ $store.state.app.currentEnterPrise.coreName?$store.state.app.currentEnterPrise.coreName:'未登录' }}</div>
+          <van-cell is-link title="切换" @click="show = true" v-if="$store.state.app.currentEnterPrise.coreName"/>
+          <van-action-sheet v-model="show" :actions="enterPrises" cancel-text="取消" description="请选择要更换的企业" @select="onSelect" />
         </div>
-        <div class="user_name">{{ $store.state.app.usersName }}</div>
+        <div class="user_name">{{ $store.state.app.currentEnterPrise.userName }}</div>
       </div>
       <ul class="quick_list">
         <li class="quick_list_item" v-for="(item,index) in quickList" :key="index" @click="toDetail(item)">
@@ -16,10 +16,10 @@
             <van-icon name="chat-o" />
             {{ item.title }}
           </div>
-          <div class="item_total" v-if="item.total && $store.state.app.coreName">{{ item.total }}</div>
+          <div class="item_total" v-if="item.total && $store.state.app.currentEnterPrise.coreName">{{ item.total }}</div>
         </li>
       </ul>
-      <div class="sign_out" @click="signOut" v-if="$store.state.app.coreName">退出账号</div>
+      <div class="sign_out" @click="signOut" v-if="$store.state.app.currentEnterPrise.coreName">退出账号</div>
     </div>
     <van-dialog v-model:show="dialogShow" title="是否确认退出？" show-cancel-button @confirm="toHome">
     </van-dialog>
@@ -29,7 +29,7 @@
 <script>
 // 请求接口
 import { getUserInfo } from '@/api/user.js'
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 import { Toast } from 'vant'
 export default {
   data() {
@@ -43,11 +43,21 @@ export default {
       show: false,
       dialogShow: false,
       coreName: '',
-      usersName: ''
+      userName: ''
     }
   },
   computed: {
-    ...mapGetters(['userName'])
+    // ...mapGetters(['userName']),
+    ...mapState({
+      enterPrises:(state) => {
+        if (state.app.enterPrise) {
+          return state.app.enterPrise.map((item) => {
+            return {...item,name:item.coreName};
+          })
+        }
+        return []
+      }
+    })
   },
   mounted() {
     this.initData()
@@ -73,20 +83,18 @@ export default {
       this.show = false
       Toast(item.name)
       this.coreName = item.name
-      this.usersName = item.userName
-      this.$store.state.app.coreName = item.name
-      this.$store.state.app.usersName = item.userName
+      this.userName = item.userName
+      this.$store.dispatch('app/setCurrentEnterPrise', item);
     },
     signOut() {
       this.dialogShow = true
     },
     toHome() {
-      this.$store.state.app.isSignIn = false
-      this.$store.state.app.coreName = ''
-      this.$store.state.app.usersName = ''
+      this.$store.dispatch('app/setIsLogin', false);
+      this.$store.dispatch('app/setCurrentEnterPrise', {});
       this.$router.push({
         path: '/home',
-        query: { isSignIn: false }
+        query: { isLogin: false }
       })
     }
   }

@@ -8,7 +8,7 @@
         <van-swipe-item>3</van-swipe-item>
         <van-swipe-item>4</van-swipe-item>
       </van-swipe>
-      <div class="login_btn" v-if="!$store.state.app.isSignIn">
+      <div class="login_btn" v-if="!$store.state.app.isLogin">
         <van-button style="width: 100px;height: 35px;" round color="linear-gradient(to right, #ff6034, #ee0a24)" @click="$router.push('/login')">
           登录
         </van-button>
@@ -17,11 +17,11 @@
     </div>
 
     <div class="center">
-      <div class="card_center_box" v-if="$store.state.app.isSignIn">
+      <div class="card_center_box" v-if="$store.state.app.isLogin">
         <div class="center_title">
           <div class="center_title_info">进度查询</div>
           <van-cell is-link title="切换" @click="show = true" />
-          <van-action-sheet v-model="show" :actions="$store.state.app.enterPrise" cancel-text="取消" description="请选择要更换的企业" @select="onSelect" />
+          <van-action-sheet v-model="show" :actions="enterPrises" cancel-text="取消" description="请选择要更换的企业" @select="onSelect" />
         </div>
         <div class="cards">
           <div class="box quick-item" v-for="(item, index) in quickList" :key="index" @click="toDetail(item)">
@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      <div class="card_center_box" v-if="$store.state.app.isSignIn">
+      <div class="card_center_box" v-if="$store.state.app.isLogin">
         <div class="center_title">
           <div class="center_title_info">操作手册</div>
           <div class="center_title_btn" @click="toOperateList">更多</div>
@@ -75,13 +75,13 @@
 
 <script>
 import { Toast } from 'vant'
-import { mapMutations } from "vuex";
+import {mapState} from "vuex";
 export default {
   name:'Home',
   data() {
     return {
       show: false,
-      isSignIn: false, // 是否登录
+      isLogin: false, // 是否登录
       quickList: [
         { title: '待办提醒', total: '99', iconSrc: '', path: '/todoList' },
         { title: '进度通知', total: '18', iconSrc: '', path: '/progressNotice' },
@@ -90,9 +90,21 @@ export default {
     }
   },
 
-  computed: {},
+  computed: {
+    // ...mapGetters(['userName']),
+    ...mapState({
+      enterPrises:(state) => {
+        if (state.app.enterPrise) {
+          return state.app.enterPrise.map((item) => {
+            return {...item,name:item.coreName};
+          })
+        }
+        return []
+      }
+    })
+  },
   created() {
-      this.isSignIn = this.$route.query.isSignIn
+      this.isLogin = this.$route.query.isLogin
   },
 
   mounted() {},
@@ -101,8 +113,7 @@ export default {
     onSelect(item) {
       this.show = false
       Toast(item.name)
-      this.$store.state.app.coreName = item.name
-      this.$store.state.app.usersName = item.userName
+      this.$store.dispatch('app/setCurrentEnterPrise', item);
     },
     toDetail(item) {
       console.log(item.path)
