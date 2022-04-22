@@ -9,7 +9,10 @@
         <van-swipe-item>4</van-swipe-item>
       </van-swipe>
       <div class="login_btn" v-if="!$store.state.app.isSignIn">
-        <div class="is_sign" @click="$router.push('/login')">登录</div>
+        <van-button style="width: 100px;height: 35px;" round color="linear-gradient(to right, #ff6034, #ee0a24)" @click="$router.push('/login')">
+          登录
+        </van-button>
+<!--        <div class="is_sign" @click="$router.push('/login')">登录</div>-->
       </div>
     </div>
 
@@ -44,27 +47,27 @@
           <div class="center_title_btn" @click="toProList">更多</div>
         </div>
         <div class="cards">
-          <div class="box" @click="$router.push('/articleDetail')">xx</div>
-          <div class="box" @click="$router.push('/articleDetail')">xx</div>
-          <div class="box" @click="$router.push('/articleDetail')">xx</div>
+          <div class="box" @click="$router.push('/articleDetail')">产品1</div>
+          <div class="box" @click="$router.push('/articleDetail')">产品2</div>
+          <div class="box" @click="$router.push('/articleDetail')">产品3</div>
         </div>
       </div>
       <div class="center_title">帮助中心</div>
       <div class="list">
         <div class="list_title">我有了额度如何开利</div>
-        <div class="list_box">xxxxxxxxxxxxxxxxxxxxxxxx</div>
+        <div class="list_box">介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍</div>
       </div>
       <div class="list">
         <div class="list_title">我有了额度如何开利</div>
-        <div class="list_box">xxxxxxxxxxxxxxxxxxxxxxxx</div>
+        <div class="list_box">介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍</div>
       </div>
       <div class="list">
         <div class="list_title">我有了额度如何开利</div>
-        <div class="list_box">xxxxxxxxxxxxxxxxxxxxxxxx</div>
+        <div class="list_box">介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍</div>
       </div>
       <div class="list">
         <div class="list_title">我有了额度如何开利</div>
-        <div class="list_box">xxxxxxxxxxxxxxxxxxxxxxxx</div>
+        <div class="list_box">介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍</div>
       </div>
     </div>
   </div>
@@ -133,11 +136,11 @@ export default {
     top: 50%;
     left: 40px;
     transform: translateY(-50%);
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+    //background: #fff;
+    //border-radius: 5px;
+    //box-shadow: 0 0 5px rgba(0, 0, 0, .2);
     text-align: center;
-    padding: 20px 15px;
+    //padding: 20px 15px;
     font-size: 24px;
     z-index: 99;
     cursor: pointer;
