@@ -91,10 +91,10 @@ export default {
     },
     toHome() {
       this.$store.dispatch('app/setIsLogin', false);
+      this.$store.dispatch('app/clearToken');
       this.$store.dispatch('app/setCurrentEnterPrise', {});
       this.$router.push({
         path: '/home',
-        query: { isLogin: false }
       })
     }
   }

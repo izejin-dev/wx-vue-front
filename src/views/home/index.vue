@@ -8,7 +8,7 @@
         <van-swipe-item>3</van-swipe-item>
         <van-swipe-item>4</van-swipe-item>
       </van-swipe>
-      <div class="login_btn" v-if="!$store.state.app.isLogin">
+      <div class="login_btn" v-if="!isLogin">
         <van-button style="width: 100px;height: 35px;" round color="linear-gradient(to right, #ff6034, #ee0a24)" @click="$router.push('/login')">
           登录
         </van-button>
@@ -17,7 +17,7 @@
     </div>
 
     <div class="center">
-      <div class="card_center_box" v-if="$store.state.app.isLogin">
+      <div class="card_center_box" v-if="isLogin">
         <div class="center_title">
           <div class="center_title_info">进度查询</div>
           <van-cell is-link title="切换" @click="show = true" />
@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      <div class="card_center_box" v-if="$store.state.app.isLogin">
+      <div class="card_center_box" v-if="isLogin">
         <div class="center_title">
           <div class="center_title_info">操作手册</div>
           <div class="center_title_btn" @click="toOperateList">更多</div>
@@ -81,7 +81,6 @@ export default {
   data() {
     return {
       show: false,
-      isLogin: false, // 是否登录
       quickList: [
         { title: '待办提醒', total: '99', iconSrc: '', path: '/todoList' },
         { title: '进度通知', total: '18', iconSrc: '', path: '/progressNotice' },
@@ -100,13 +99,12 @@ export default {
           })
         }
         return []
+      },
+      isLogin:(state) => {
+        return state.app.isLogin
       }
     })
   },
-  created() {
-      this.isLogin = this.$route.query.isLogin
-  },
-
   mounted() {},
 
   methods: {

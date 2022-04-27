@@ -143,11 +143,9 @@ export default {
     },
     toHome() {
       if (this.isSelect) {
-        this.$store.dispatch('app/setIsLogin', true);
-        this.$router.push({
-          path: 'home',
-          query: { isLogin: true, enterpriseName: this.enterpriseName }
-        })
+        this.$store.dispatch('app/setToken','I am token');
+        // this.$store.dispatch('app/setIsLogin', true);
+        this.$router.push({ path: 'home' })
       } else {
         this.$notify({
           type: 'danger',
